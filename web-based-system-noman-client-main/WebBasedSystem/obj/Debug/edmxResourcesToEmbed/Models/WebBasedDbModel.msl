@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebBaseSystemModelStoreContainer" CdmEntityContainer="WebBaseSystemEntities">
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="WebBaseSystemModel.Note">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+          <ScalarProperty Name="NotesDescription" ColumnName="NotesDescription" />
+          <ScalarProperty Name="TakingNewPatients" ColumnName="TakingNewPatients" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Waiting_Time" ColumnName="Waiting_Time" />
+          <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="WebBaseSystemModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specialists">
+      <EntityTypeMapping TypeName="WebBaseSystemModel.Specialist">
+        <MappingFragment StoreEntitySet="Specialist">
+          <ScalarProperty Name="SpecialistId" ColumnName="SpecialistId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SpecialistName" ColumnName="SpecialistName" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="SpecialistTypeId" ColumnName="SpecialistTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialistTypes">
+      <EntityTypeMapping TypeName="WebBaseSystemModel.SpecialistType">
+        <MappingFragment StoreEntitySet="SpecialistType">
+          <ScalarProperty Name="SpecialistTypeId" ColumnName="SpecialistTypeId" />
+          <ScalarProperty Name="SpecialistTypeName" ColumnName="SpecialistTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="WebBaseSystemModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WayPoints">
+      <EntityTypeMapping TypeName="WebBaseSystemModel.WayPoint">
+        <MappingFragment StoreEntitySet="WayPoints">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Suburbs" ColumnName="Suburbs" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SpecialistTypeId" ColumnName="SpecialistTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="WebBaseSystemModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebBaseSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Notes">
+    <Key>
+      <PropertyRef Name="NoteId" />
+    </Key>
+    <Property Name="NoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NotesDescription" Type="nvarchar(max)" />
+    <Property Name="TakingNewPatients" Type="bit" />
+    <Property Name="price" Type="nvarchar" MaxLength="13" />
+    <Property Name="Waiting_Time" Type="nvarchar" MaxLength="200" />
+    <Property Name="SpecialistId" Type="int" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Specialist">
+    <Key>
+      <PropertyRef Name="SpecialistId" />
+    </Key>
+    <Property Name="SpecialistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpecialistName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="20" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="20" />
+    <Property Name="OfficeAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="HomeAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="BusinessName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpecialistTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="SpecialistType">
+    <Key>
+      <PropertyRef Name="SpecialistTypeId" />
+    </Key>
+    <Property Name="SpecialistTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SpecialistTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="int" />
+    <Property Name="PhoneNo" Type="int" />
+    <Property Name="Age" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pass" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="ResetPasswordCode" Type="varchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="WayPoints">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="Suburbs" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostCode" Type="varchar" MaxLength="10" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpecialistTypeId" Type="int" />
+  </EntityType>
+  <Association Name="FK__Notes__Specialis__2E1BDC42">
+    <End Role="Specialist" Type="Self.Specialist" Multiplicity="0..1" />
+    <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialist">
+        <PropertyRef Name="SpecialistId" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="SpecialistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Specialis__Speci__2F10007B">
+    <End Role="SpecialistType" Type="Self.SpecialistType" Multiplicity="0..1" />
+    <End Role="Specialist" Type="Self.Specialist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecialistType">
+        <PropertyRef Name="SpecialistTypeId" />
+      </Principal>
+      <Dependent Role="Specialist">
+        <PropertyRef Name="SpecialistTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__RoleId__300424B4">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WayPoints__Speci__30F848ED">
+    <End Role="SpecialistType" Type="Self.SpecialistType" Multiplicity="0..1" />
+    <End Role="WayPoints" Type="Self.WayPoints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecialistType">
+        <PropertyRef Name="SpecialistTypeId" />
+      </Principal>
+      <Dependent Role="WayPoints">
+        <PropertyRef Name="SpecialistTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebBaseSystemModelStoreContainer">
+    <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Specialist" EntityType="Self.Specialist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecialistType" EntityType="Self.SpecialistType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WayPoints" EntityType="Self.WayPoints" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Notes__Specialis__2E1BDC42" Association="Self.FK__Notes__Specialis__2E1BDC42">
+      <End Role="Specialist" EntitySet="Specialist" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Specialis__Speci__2F10007B" Association="Self.FK__Specialis__Speci__2F10007B">
+      <End Role="SpecialistType" EntitySet="SpecialistType" />
+      <End Role="Specialist" EntitySet="Specialist" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__RoleId__300424B4" Association="Self.FK__Users__RoleId__300424B4">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WayPoints__Speci__30F848ED" Association="Self.FK__WayPoints__Speci__30F848ED">
+      <End Role="SpecialistType" EntitySet="SpecialistType" />
+      <End Role="WayPoints" EntitySet="WayPoints" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
